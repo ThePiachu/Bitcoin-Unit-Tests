@@ -1,0 +1,11 @@
+This folder contains unit tests for Bitcoin Script:
+https://en.bitcoin.it/wiki/Script
+
+The file format is as follows:
+-Each test case consists of 3 lines:
+	+First line contains human-readable opcodes and other bytes used to create the script. Each of them are separated by a comma and a space.
+	+A compiled string of bytes that is created from the first line
+	+A compiled string of bytes that is created by appending all the items remaining on the stack. Leftmost part of the string represents the data deepest in the stack, and the rightmost - the top items.
+
+Files in this folder and their description:
+-Script Test 1 - a basic set of tests for simple Script ops.
