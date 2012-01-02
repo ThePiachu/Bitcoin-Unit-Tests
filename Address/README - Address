@@ -1,0 +1,38 @@
+This folder contains unit tests for Bitcoin Addresses:
+https://en.bitcoin.it/wiki/Address
+https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses
+
+
+
+The file format for "Address Generation" tests is as follows:
+-Each test case consists of 10 lines, and is separated by 1 empty line. Each line corresponds to steps 0-9 described in the wiki page for "Technical background of version 1 Bitcoin addresses", under "How to create Bitcoin Address". Here is the extract from that page:
+
+"
+How to create Bitcoin Address
+
+0 - Take a private key
+   588CDBFC49007427D2A925879BE644F173023701961B271F79EA0588ACFD9D9C
+1 - Take the corresponding public key generated with it (65 bytes, 1 byte 0x04, 32 bytes corresponding to X coordinate, 32 bytes corresponding to Y coordinate) 
+    0425E27B5B330C9E3875B32C3CB0E30BF6D78BF88B29C6085CA439A89B8860528B9DC115E6EF955392E065625F3120B93F04D4534704C74EE6869CFABA62AD156C
+2 - Perform SHA-256 hashing on the public key
+   38F1186C4F40D2E8DB07630F6C0DF23DDF9E77D9C348F577E4914EFBD0F1B3AE
+3 - Perform RIPEMD-160 hashing on the result of SHA-256
+   7B42545440E6991053882AF2A94CC871DC9DB983
+4 - Add network byte in front of RIPEMD-160 hash (0x00 for Main Network)
+   007B42545440E6991053882AF2A94CC871DC9DB983
+5 - Perform SHA-256 hash on the extended RIPEMD-160 result
+   38ADDF81FF63470444934641C1FB4A15AEAC453B39A3B8C5B3C4F4F1CA0D327E
+6 - Perform SHA-256 hash on the result of the previous SHA-256 hash
+   24A28FF4C92B254D52E6E54D50A1963FA5FA3CF52E6F9C168DA6AF6A42DEABFD
+7 - Take the first 4 bytes of the second SHA-256 hash. This is the address checksum
+   24A28FF4
+8 - Add the 4 checksum bytes from point 7 at the end of extended RIPEMD-160 hash from point 4. This is the 25-byte binary Bitcoin Address.
+   007B42545440E6991053882AF2A94CC871DC9DB98324A28FF4
+9 - Convert the result from a byte string into a base58 string using Base58Check encoding. This is the most commonly used Bitcoin Address format
+   1CEjaF7kT9CXiDCRUNVBiRsw4n34D4zw9u
+"
+
+-The test is considered passed given the public key from point 1 (line 2), the address generator successfully creates a base58-encoded Bitcoin Address from point 9 (line 10).
+
+Files in this folder and their description:
+-Address Generation Test 1 - a collection of random private and public keys, their corresponding Bitcoin Address and all intermediate steps used in its generation.
