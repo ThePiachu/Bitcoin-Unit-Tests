@@ -1,1 +1,10 @@
 This is a repository of unit tests for testing Bitcoin-related applications.
+
+Tests status (which implementations tested those tests):
+-Script
+	+Script Test 1 - tested with GoBit
+-ECDSA
+	+Key pairs Test 1 - tested with GoBit
+
+If you found those tests useful, consider donating some coins to:
+ThePiachu - 1HWbVLhxj7bhewhyapMZpyhqWAeAhJd51E

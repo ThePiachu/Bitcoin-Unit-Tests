@@ -1,0 +1,13 @@
+This folder contains unit tests for Elliptic Curve Digital Signature Algorithm used by Bitcoin:
+https://en.bitcoin.it/wiki/ECDSA
+https://en.bitcoin.it/wiki/Private_key
+
+
+The file format for "Key pairs" tests is as follows:
+-Each test case consists of 2 lines, and is separated by 1 empty line:
+	+First line contains the private key of the Koblitz Curve secp256k1.
+	+Second line contains the public key of the Koblitz Curve secp256k1.
+-The test is considered passed when the ECDSA algorithm given a private key generated the proper public key.
+
+Files in this folder and their description:
+-Key pairs test 1 - a basic collection of random ECDSA keypairs.
